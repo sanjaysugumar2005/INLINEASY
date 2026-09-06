@@ -3,7 +3,7 @@
 // STEP 7.3 - DATABASE BOOKINGS
 // ==========================================
 
-const API_URL = "https://inlineasy-cng-api.onrender.com";
+const API_URL = "https://inlineasy.onrender.com";
 let bookings = [];
 
 
