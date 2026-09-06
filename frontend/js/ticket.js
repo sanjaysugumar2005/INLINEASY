@@ -388,7 +388,7 @@ async function loadLiveStatus() {
     try {
 
 	const response = await fetch(
-   	 `https://inlineasy-cng-api.onrender.com/api/booking/${encodeURIComponent(tokenNumber)}`
+   	 `https://inlineasy.onrender.com/api/booking/${encodeURIComponent(tokenNumber)}`
 	);
         const data = await response.json();
 
