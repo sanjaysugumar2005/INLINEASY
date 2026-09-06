@@ -764,7 +764,7 @@ async function confirmBooking() {
 
         const response =
             await fetch(
-"https://inlineasy-cng-api.onrender.com/api/bookings",
+"https://inlineasy.onrender.com/api/bookings",
                 {
 
                     method: "POST",
