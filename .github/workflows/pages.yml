@@ -1,4 +1,4 @@
-name: Deploy INLINEASY to GitHub Pages
+name: Deploy INLINEASY CNG to GitHub Pages
 
 on:
   push:
@@ -27,15 +27,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-
-      - name: Prepare website
+      - name: Prepare CNG website
         run: |
           mkdir -p _site
           cp index.html _site/
-          cp -r css _site/
-          cp -r js _site/
-          cp -r pages _site/
-
+          cp -r frontend/css _site/
+          cp -r frontend/js _site/
+          cp frontend/admin.html _site/
+          cp frontend/bookingthree.html _site/
+          cp frontend/bunktwo.html _site/
+          cp frontend/step5.html _site/
+          cp frontend/ticket.html _site/
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

@@ -1,1071 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INLINEASY — Smart Restaurant Ordering</title>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
-
-        :root {
-            --neon: #00FF42;
-            --green: #00C853;
-
-            --black: #080808;
-            --surface: #111111;
-            --surface-2: #161616;
-
-            --white: #FFFFFF;
-            --gray: #A8A8A8;
-            --border: #303030;
-
-            --radius: 24px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            min-height: 100vh;
-            background:
-                radial-gradient(
-                    circle at 80% 10%,
-                    rgba(0, 255, 66, 0.08),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 10% 80%,
-                    rgba(0, 255, 66, 0.04),
-                    transparent 25%
-                ),
-                var(--black);
-
-            color: var(--white);
-            font-family: "Manrope", sans-serif;
-        }
-
-        button,
-        input {
-            font-family: inherit;
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-        /* =========================
-           APP SHELL
-        ========================= */
-
-        .app {
-            width: 100%;
-            max-width: 1440px;
-            min-height: 100vh;
-            margin: auto;
-            padding: 28px 5%;
-        }
-
-        /* =========================
-           NAVBAR
-        ========================= */
-
-        .navbar {
-            height: 68px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            margin-bottom: 70px;
-        }
-
-        .logo {
-            font-size: 27px;
-            font-weight: 800;
-            letter-spacing: -1.5px;
-        }
-
-        .logo span {
-            color: var(--neon);
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
 
-            padding: 10px 16px;
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-            border: 1px solid rgba(0, 255, 66, 0.2);
-            background: rgba(0, 255, 66, 0.05);
+    <title>INLINEASY | Smart Slot Booking</title>
 
-            border-radius: 50px;
+    <link rel="stylesheet" href="../css/style.css">
+<style>
+/* =========================================
+   INLINEASY — PREMIUM LOGIN
+   BLACK / WHITE / NEON GREEN
+========================================= */
 
-            font-size: 12px;
-            color: var(--gray);
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            background: var(--neon);
-            border-radius: 50%;
-            box-shadow: 0 0 12px var(--neon);
-        }
+body {
+    font-family: "Posterama1919", Arial, sans-serif;
+    background: #050505;
+    color: #ffffff;
+    min-height: 100vh;
 
-        .login-btn {
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-            padding: 11px 19px;
-            border-radius: 50px;
+    padding: 24px 16px;
+}
 
-            font-weight: 700;
-            font-size: 13px;
+/* MAIN CARD */
 
-            transition: 0.25s ease;
-        }
+.container {
+    width: 100%;
+    max-width: 460px;
 
-        .login-btn:hover {
-            border-color: var(--neon);
-            color: var(--neon);
-        }
+    background: #0b0b0b;
 
-        /* =========================
-           HERO
-        ========================= */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
 
-        .hero {
-            min-height: 530px;
+    padding: 42px 38px;
 
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 50px;
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.65),
+        0 0 40px rgba(0, 255, 66, 0.04);
 
-            align-items: center;
+    position: relative;
+    overflow: hidden;
+}
 
-            margin-bottom: 90px;
-        }
+/* GREEN TOP LINE */
 
-        .hero-content {
-            max-width: 650px;
-        }
+.container::before {
+    content: "";
 
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 2px;
 
-            color: var(--neon);
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
+    background: #00FF42;
 
-            margin-bottom: 22px;
-        }
+    box-shadow:
+        0 0 15px rgba(0, 255, 66, 0.8),
+        0 0 35px rgba(0, 255, 66, 0.25);
+}
 
-        .eyebrow-line {
-            width: 28px;
-            height: 1px;
-            background: var(--neon);
-        }
+/* LOGO */
 
-        .hero h1 {
-            font-size: clamp(48px, 7vw, 88px);
-            line-height: 0.98;
-            letter-spacing: -4px;
-            font-weight: 800;
+.logo {
+    text-align: center;
 
-            margin-bottom: 28px;
-        }
+    font-size: 30px;
+    font-weight: 900;
 
-        .hero h1 span {
-            color: var(--neon);
-        }
+    letter-spacing: 1.5px;
 
-        .hero-description {
-            max-width: 540px;
+    margin-bottom: 38px;
 
-            color: var(--gray);
-            font-size: 17px;
-            line-height: 1.8;
+    color: #ffffff;
+}
 
-            margin-bottom: 35px;
-        }
+.logo span {
+    color: #00FF42;
 
-        .hero-actions {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
+    text-shadow:
+        0 0 12px rgba(0, 255, 66, 0.7);
+}
 
-        .primary-btn {
-            border: none;
-            background: var(--neon);
-            color: #000;
+/* WELCOME */
 
-            min-height: 54px;
-            padding: 0 28px;
+.welcome {
+    text-align: center;
 
-            border-radius: 14px;
+    margin-bottom: 9px;
 
-            font-size: 14px;
-            font-weight: 800;
+    color: #777777;
 
-            transition: 0.25s ease;
-        }
+    font-size: 11px;
+    font-weight: 700;
 
-        .primary-btn:hover {
-            background: var(--green);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(0, 255, 66, 0.18);
-        }
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
-        .secondary-btn {
-            min-height: 54px;
-            padding: 0 24px;
+/* TITLE */
 
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.02);
+h1 {
+    text-align: center;
 
-            color: var(--white);
+    color: #ffffff;
 
-            border-radius: 14px;
+    font-size: 31px;
+    line-height: 1.15;
 
-            font-size: 14px;
-            font-weight: 700;
+    letter-spacing: -0.7px;
 
-            transition: 0.25s ease;
-        }
+    margin-bottom: 10px;
+}
 
-        .secondary-btn:hover {
-            border-color: #555;
-            background: rgba(255,255,255,0.05);
-        }
+/* TAGLINE */
 
-        /* =========================
-           GLASS HERO CARD
-        ========================= */
+.tagline {
+    text-align: center;
 
-        .hero-card {
-            position: relative;
+    color: #8d8d8d;
 
-            min-height: 450px;
+    font-size: 13px;
 
-            border: 1px solid rgba(255,255,255,0.09);
+    margin-bottom: 34px;
+}
 
-            border-radius: 30px;
+.tagline span {
+    color: #00FF42;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.08),
-                    rgba(255,255,255,0.025)
-                );
+    font-weight: 900;
 
-            backdrop-filter: blur(20px);
+    text-shadow:
+        0 0 10px rgba(0, 255, 66, 0.6);
+}
 
-            overflow: hidden;
+/* FORM */
 
-            padding: 28px;
+.form-group {
+    margin-bottom: 20px;
+}
 
-            box-shadow:
-                0 30px 80px rgba(0,0,0,0.35),
-                inset 0 1px rgba(255,255,255,0.06);
-        }
+label {
+    display: block;
 
-        .hero-glow {
-            position: absolute;
+    color: #d0d0d0;
 
-            width: 230px;
-            height: 230px;
+    font-size: 10px;
+    font-weight: 800;
 
-            right: -70px;
-            top: -70px;
+    letter-spacing: 1px;
 
-            background: var(--neon);
+    margin-bottom: 8px;
+}
 
-            opacity: 0.12;
-            filter: blur(70px);
+/* INPUT WRAPPER */
 
-            border-radius: 50%;
-        }
+.input-wrapper {
+    position: relative;
+}
 
-        .food-image {
-            height: 270px;
+/* ICON */
 
-            border-radius: 22px;
+.input-icon {
+    position: absolute;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    left: 14px;
+    top: 50%;
 
-            background:
-                radial-gradient(
-                    circle at center,
-                    #292929,
-                    #111111 65%
-                );
+    transform: translateY(-50%);
 
-            font-size: 100px;
+    color: #777777;
 
-            margin-bottom: 24px;
+    font-size: 14px;
 
-            position: relative;
-        }
+    z-index: 2;
+}
 
-        .food-badge {
-            position: absolute;
-            top: 16px;
-            left: 16px;
+/* INPUT */
 
-            padding: 8px 12px;
+input {
+    width: 100%;
+    height: 53px;
 
-            border-radius: 50px;
+    padding:
+        10px 13px 10px 42px;
 
-            background: rgba(0,0,0,0.65);
-            border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.10);
 
-            font-size: 11px;
-            color: var(--neon);
-            font-weight: 800;
-        }
+    border-radius: 12px;
 
-        .food-info {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-        }
+    background: #111111;
 
-        .food-info h3 {
-            font-size: 20px;
-            margin-bottom: 6px;
-        }
+    color: #ffffff;
 
-        .food-info p {
-            color: var(--gray);
-            font-size: 12px;
-        }
+    font-family: inherit;
+    font-size: 13px;
 
-        .price {
-            font-family: "JetBrains Mono", monospace;
-            color: var(--neon);
-            font-size: 18px;
-            font-weight: 700;
-        }
+    outline: none;
 
-        /* =========================
-           SECTION
-        ========================= */
+    transition: 0.25s ease;
+}
 
-        .section {
-            margin-bottom: 90px;
-        }
+input::placeholder {
+    color: #666666;
+}
 
-        .section-header {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
+input:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+}
 
-            margin-bottom: 28px;
-        }
+input:focus {
+    border-color: #00FF42;
 
-        .section-label {
-            color: var(--gray);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+    box-shadow:
+        0 0 0 3px rgba(0, 255, 66, 0.10),
+        0 0 20px rgba(0, 255, 66, 0.08);
+}
 
-            margin-bottom: 8px;
-        }
+/* BUTTON */
 
-        .section-title {
-            font-size: 32px;
-            letter-spacing: -1.5px;
-        }
+button {
+    width: 100%;
+    height: 53px;
 
-        .view-all {
-            color: var(--neon);
-            font-size: 13px;
-            font-weight: 700;
-            text-decoration: none;
-        }
+    margin-top: 4px;
 
-        /* =========================
-           CATEGORY
-        ========================= */
+    border: none;
 
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 16px;
-        }
+    border-radius: 12px;
 
-        .category {
-            padding: 24px 20px;
+    background: #00FF42;
 
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.025);
+    color: #000000;
 
-            border-radius: var(--radius);
+    font-family: inherit;
 
-            transition: 0.25s ease;
-        }
+    font-size: 13px;
+    font-weight: 900;
 
-        .category:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0,255,66,0.35);
-            background: rgba(0,255,66,0.04);
-        }
+    letter-spacing: 0.8px;
 
-        .category-icon {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
+    cursor: pointer;
 
-        .category h3 {
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
+    transition: 0.25s ease;
 
-        .category p {
-            color: var(--gray);
-            font-size: 11px;
-        }
+    box-shadow:
+        0 0 0 rgba(0, 255, 66, 0);
+}
 
-        /* =========================
-           FOOD CARDS
-        ========================= */
+button:hover {
+    transform: translateY(-2px);
 
-        .food-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+    box-shadow:
+        0 10px 30px rgba(0, 255, 66, 0.20),
+        0 0 25px rgba(0, 255, 66, 0.12);
+}
 
-        .food-card {
-            padding: 14px;
+button:active {
+    transform: translateY(0);
+}
 
-            border: 1px solid var(--border);
+/* ERROR */
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.045),
-                    rgba(255,255,255,0.015)
-                );
+.error {
+    color: #ff4d4d;
 
-            border-radius: var(--radius);
+    font-size: 12px;
 
-            transition: 0.3s ease;
-        }
+    text-align: center;
 
-        .food-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(0,255,66,0.3);
-        }
+    margin-top: 14px;
 
-        .food-card-image {
-            height: 220px;
+    display: none;
+}
 
-            border-radius: 18px;
+/* SECURITY */
 
-            background:
-                radial-gradient(
-                    circle,
-                    #292929,
-                    #121212
-                );
+.secure-note {
+    display: flex;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    justify-content: center;
+    align-items: center;
 
-            font-size: 72px;
+    gap: 7px;
 
-            margin-bottom: 18px;
-        }
+    color: #666666;
 
-        .food-card-info {
-            padding: 0 5px 5px;
-        }
+    font-size: 10px;
 
-        .food-card-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    margin-top: 25px;
+}
 
-            margin-bottom: 7px;
-        }
+.secure-dot {
+    width: 6px;
+    height: 6px;
 
-        .food-card h3 {
-            font-size: 16px;
-        }
+    border-radius: 50%;
 
-        .rating {
-            color: var(--neon);
-            font-size: 11px;
-            font-weight: 700;
-        }
+    background: #00FF42;
 
-        .food-card-description {
-            color: var(--gray);
-            font-size: 11px;
-            margin-bottom: 18px;
-        }
+    box-shadow:
+        0 0 8px rgba(0, 255, 66, 0.7);
+}
 
-        .food-card-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+/* FOOTER */
 
-        .add-btn {
-            border: 1px solid var(--neon);
-            background: transparent;
-            color: var(--neon);
+.footer {
+    text-align: center;
 
-            padding: 9px 15px;
+    margin-top: 22px;
+    padding-top: 18px;
 
-            border-radius: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
 
-            font-size: 12px;
-            font-weight: 800;
+    color: #666666;
 
-            transition: 0.2s ease;
-        }
+    font-size: 9px;
+}
 
-        .add-btn:hover {
-            background: var(--neon);
-            color: #000;
-        }
+.footer strong {
+    color: #ffffff;
+}
 
-        /* =========================
-           CTA
-        ========================= */
+.footer span {
+    color: #00FF42;
+}
 
-        .cta {
-            padding: 60px;
+/* MOBILE */
 
-            border-radius: 30px;
+@media (max-width: 520px) {
 
-            border: 1px solid rgba(0,255,66,0.18);
+    body {
+        padding: 18px 12px;
+    }
 
-            background:
-                radial-gradient(
-                    circle at 80% 50%,
-                    rgba(0,255,66,0.1),
-                    transparent 35%
-                ),
-                #101010;
+    .container {
+        padding: 32px 22px;
 
-            margin-bottom: 70px;
+        border-radius: 20px;
+    }
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    .logo {
+        font-size: 25px;
 
-            gap: 30px;
-        }
+        margin-bottom: 30px;
+    }
 
-        .cta h2 {
-            font-size: 38px;
-            letter-spacing: -1.8px;
-            margin-bottom: 10px;
-        }
+    h1 {
+        font-size: 27px;
+    }
+}
+</style>
 
-        .cta p {
-            color: var(--gray);
-            font-size: 14px;
-        }
 
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            padding: 28px 0;
-
-            border-top: 1px solid #202020;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            color: var(--gray);
-            font-size: 11px;
-        }
-
-        .footer-logo {
-            color: var(--white);
-            font-size: 15px;
-            font-weight: 800;
-        }
-
-        .footer-logo span {
-            color: var(--neon);
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            .hero {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-card {
-                max-width: 600px;
-                width: 100%;
-                margin: auto;
-            }
-
-            .categories {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .food-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .app {
-                padding: 20px;
-            }
-
-            .navbar {
-                margin-bottom: 45px;
-            }
-
-            .status {
-                display: none;
-            }
-
-            .hero {
-                min-height: auto;
-                margin-bottom: 65px;
-                gap: 35px;
-            }
-
-            .hero h1 {
-                font-size: 50px;
-                letter-spacing: -2.5px;
-            }
-
-            .hero-description {
-                font-size: 14px;
-                line-height: 1.7;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .primary-btn,
-            .secondary-btn {
-                width: 100%;
-            }
-
-            .hero-card {
-                min-height: 390px;
-                padding: 16px;
-            }
-
-            .food-image {
-                height: 230px;
-            }
-
-            .categories {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .food-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                margin-bottom: 65px;
-            }
-
-            .section-title {
-                font-size: 26px;
-            }
-
-            .cta {
-                padding: 35px 25px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .cta h2 {
-                font-size: 30px;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
-        }
-    </style>
 </head>
+
 
 <body>
 
-<div class="app">
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
+    <div class="container">
+
+
+        <!-- =========================
+             LOGO
+        ========================== -->
 
         <div class="logo">
+
             INLIN<span>E</span>ASY
-        </div>
-
-        <div class="nav-right">
-
-            <div class="status">
-                <span class="status-dot"></span>
-                Restaurants Online
-            </div>
-
-            <button class="login-btn" onclick="startOrdering()">
-                Login
-            </button>
-
-        </div>
-
-    </nav>
-
-
-    <!-- HERO -->
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <div class="eyebrow">
-                <span class="eyebrow-line"></span>
-                SMART RESTAURANT ORDERING
-            </div>
-
-            <h1>
-                ORDER SMART.<br>
-                EAT <span>BETTER.</span>
-            </h1>
-
-            <p class="hero-description">
-                Skip the wait and order your favourite food
-                directly from your restaurant. Fast, simple,
-                and designed around you.
-            </p>
-
-            <div class="hero-actions">
-
-                <button class="primary-btn" onclick="startOrdering()">
-                    START ORDERING →
-                </button>
-
-                <button class="secondary-btn" onclick="exploreMenu()">
-                    Explore Menu
-                </button>
-
-            </div>
 
         </div>
 
 
-        <!-- GLASS FOOD CARD -->
-        <div class="hero-card">
+        <!-- =========================
+             TITLE
+        ========================== -->
 
-            <div class="hero-glow"></div>
+        <p class="welcome">
 
-            <div class="food-image">
+            Welcome To
 
-                <div class="food-badge">
-                    ★ TODAY'S PICK
+        </p>
+
+
+        <h1>
+
+            Smart Slot Booking
+
+        </h1>
+
+
+        <p class="tagline">
+
+            Your Time, Your Fuel
+            <span>•</span>
+
+        </p>
+
+
+
+        <!-- =========================
+             USERNAME
+        ========================== -->
+
+        <div class="form-group">
+
+
+            <label for="userName">
+
+                YOUR NAME
+
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <div class="input-icon">
+                    👤
                 </div>
 
-                🍔
+
+                <input
+                    type="text"
+                    id="userName"
+                    placeholder="Enter your name"
+                    maxlength="30"
+                    autocomplete="name"
+                >
 
             </div>
 
-            <div class="food-info">
-
-                <div>
-                    <h3>Classic Chicken Burger</h3>
-                    <p>Crispy chicken • Cheese • Fresh veggies</p>
-                </div>
-
-                <div class="price">
-                    ₹249
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CATEGORIES -->
-    <section class="section">
-
-        <div class="section-header">
-
-            <div>
-                <div class="section-label">
-                    Explore
-                </div>
-
-                <h2 class="section-title">
-                    What are you craving?
-                </h2>
-            </div>
-
-        </div>
-
-
-        <div class="categories">
-
-            <div class="category">
-                <div class="category-icon">🍔</div>
-                <h3>Burgers</h3>
-                <p>18 items</p>
-            </div>
-
-            <div class="category">
-                <div class="category-icon">🍕</div>
-                <h3>Pizza</h3>
-                <p>24 items</p>
-            </div>
-
-            <div class="category">
-                <div class="category-icon">🍜</div>
-                <h3>Noodles</h3>
-                <p>15 items</p>
-            </div>
-
-            <div class="category">
-                <div class="category-icon">🥗</div>
-                <h3>Healthy</h3>
-                <p>12 items</p>
-            </div>
-
-            <div class="category">
-                <div class="category-icon">🥤</div>
-                <h3>Drinks</h3>
-                <p>20 items</p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- POPULAR FOOD -->
-    <section class="section">
-
-        <div class="section-header">
-
-            <div>
-                <div class="section-label">
-                    Trending
-                </div>
-
-                <h2 class="section-title">
-                    Popular today
-                </h2>
-            </div>
-
-            <a href="#" class="view-all">
-                View all →
-            </a>
 
         </div>
 
 
-        <div class="food-grid">
 
-            <div class="food-card">
+        <!-- =========================
+             PHONE
+        ========================== -->
 
-                <div class="food-card-image">
-                    🍔
+        <div class="form-group">
+
+
+            <label for="phoneNumber">
+
+                PHONE NUMBER
+
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <div class="input-icon">
+                    📱
                 </div>
 
-                <div class="food-card-info">
 
-                    <div class="food-card-top">
-                        <h3>Chicken Burger</h3>
-                        <span class="rating">★ 4.8</span>
-                    </div>
-
-                    <p class="food-card-description">
-                        Crispy chicken with cheese and fresh veggies.
-                    </p>
-
-                    <div class="food-card-bottom">
-
-                        <div class="price">
-                            ₹249
-                        </div>
-
-                        <button class="add-btn" onclick="addFood('Chicken Burger')">
-                            + ADD
-                        </button>
-
-                    </div>
-
-                </div>
+                <input
+                    type="tel"
+                    id="phoneNumber"
+                    placeholder="10-digit mobile number"
+                    maxlength="10"
+                    inputmode="numeric"
+                    autocomplete="tel"
+                >
 
             </div>
 
-
-            <div class="food-card">
-
-                <div class="food-card-image">
-                    🍕
-                </div>
-
-                <div class="food-card-info">
-
-                    <div class="food-card-top">
-                        <h3>Loaded Pizza</h3>
-                        <span class="rating">★ 4.9</span>
-                    </div>
-
-                    <p class="food-card-description">
-                        Cheese loaded pizza with fresh toppings.
-                    </p>
-
-                    <div class="food-card-bottom">
-
-                        <div class="price">
-                            ₹299
-                        </div>
-
-                        <button class="add-btn" onclick="addFood('Loaded Pizza')">
-                            + ADD
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="food-card">
-
-                <div class="food-card-image">
-                    🍜
-                </div>
-
-                <div class="food-card-info">
-
-                    <div class="food-card-top">
-                        <h3>Spicy Noodles</h3>
-                        <span class="rating">★ 4.7</span>
-                    </div>
-
-                    <p class="food-card-description">
-                        Hot spicy noodles with vegetables.
-                    </p>
-
-                    <div class="food-card-bottom">
-
-                        <div class="price">
-                            ₹199
-                        </div>
-
-                        <button class="add-btn" onclick="addFood('Spicy Noodles')">
-                            + ADD
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
 
         </div>
 
-    </section>
 
 
-    <!-- CTA -->
-    <section class="cta">
+        <!-- =========================
+             ENTER
+        ========================== -->
 
-        <div>
-            <h2>Ready to order?</h2>
+        <button
+            onclick="continueToBunk()">
 
-            <p>
-                Your next favourite meal is just a few clicks away.
-            </p>
-        </div>
+            CONTINUE
 
-        <button class="primary-btn" onclick="startOrdering()">
-            START ORDERING →
         </button>
 
-    </section>
+
+        <!-- =========================
+             ERROR
+        ========================== -->
+
+        <p
+            id="errorMessage"
+            class="error">
+        </p>
 
 
-    <!-- FOOTER -->
-    <footer>
 
-        <div class="footer-logo">
-            INLIN<span>E</span>ASY
+        <!-- =========================
+             SECURITY
+        ========================== -->
+
+        <div class="secure-note">
+
+            <div class="secure-dot"></div>
+
+            Your booking information is securely stored
+
         </div>
 
-        <div>
-            Smart ordering. Simple experience.
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <div class="footer">
+
+            <strong>
+                INLIN<span>E</span>ASY
+            </strong>
+
+            &nbsp;•&nbsp;
+
+            Smart Mobility Platform
+
         </div>
 
-        <div>
-            © 2026 INLINEASY
-        </div>
 
-    </footer>
-
-</div>
+    </div>
 
 
-<script>
 
-    function startOrdering() {
-        window.location.href = "pages/login.html";
-    }
+    <!--
+        index.html
+        is inside frontend/
 
-    function exploreMenu() {
-        document.querySelector(".section").scrollIntoView({
-            behavior: "smooth"
-        });
-    }
+        script.js
+        is inside js/
 
-    function addFood(foodName) {
-        alert(foodName + " added to cart 🛒");
-    }
+        Therefore:
+        ../js/script.js
+    -->
 
-</script>
+    <script src="../js/script.js"></script>
+
 
 </body>
+
 </html>
