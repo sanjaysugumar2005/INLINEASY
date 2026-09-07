@@ -27,3 +27,4 @@ backend/.env
 
 # Temporary working files
 *.working*
+venv/
